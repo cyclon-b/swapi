@@ -7,10 +7,14 @@ import { provideStore } from '@ngrx/store';
 import { provideEffects } from '@ngrx/effects';
 import { provideRouterStore } from '@ngrx/router-store';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
+import { rootReducer } from './app/store/root-store.reducer';
 
-
-bootstrapApplication(AppComponent,
-  {
-    providers: [importProvidersFrom(RouterModule.forRoot(rootRoutes)), provideStore(), provideEffects(), provideRouterStore(), provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() })],
-  })
-  .catch(err => console.error(err));
+bootstrapApplication(AppComponent, {
+  providers: [
+    importProvidersFrom(RouterModule.forRoot(rootRoutes)),
+    provideStore({ root: rootReducer }),
+    provideEffects(),
+    provideRouterStore(),
+    provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),
+  ],
+}).catch(err => console.error(err));

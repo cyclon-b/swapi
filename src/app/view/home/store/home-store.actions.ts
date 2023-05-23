@@ -6,5 +6,5 @@ export const HomeStoreActions = createActionGroup({
     'Load HomeStores': emptyProps(),
     'Load HomeStores Success': props<{ data: unknown }>(),
     'Load HomeStores Failure': props<{ error: unknown }>(),
-  }
+  },
 });

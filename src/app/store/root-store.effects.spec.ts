@@ -2,21 +2,18 @@ import { TestBed } from '@angular/core/testing';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { Observable } from 'rxjs';
 
-import { HomeStoreEffects } from './home-store.effects';
+import { RootStoreEffects } from './root-store.effects';
 
-describe('HomeStoreEffects', () => {
+describe('RootStoreEffects', () => {
   let actions$: Observable<any>;
-  let effects: HomeStoreEffects;
+  let effects: RootStoreEffects;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [
-        HomeStoreEffects,
-        provideMockActions(() => actions$)
-      ]
+      providers: [RootStoreEffects, provideMockActions(() => actions$)],
     });
 
-    effects = TestBed.inject(HomeStoreEffects);
+    effects = TestBed.inject(RootStoreEffects);
   });
 
   it('should be created', () => {

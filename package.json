@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "format:write": "prettier --write ."
   },
   "private": true,
   "dependencies": {
@@ -24,6 +25,9 @@
     "@ngrx/router-store": "^16.0.0",
     "@ngrx/store": "^16.0.0",
     "@ngrx/store-devtools": "^16.0.0",
+    "primeflex": "^3.3.0",
+    "primeicons": "^6.0.1",
+    "primeng": "^16.0.0-rc.2",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.0"
@@ -40,6 +44,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
+    "prettier": "^2.8.8",
     "typescript": "~5.0.2"
   }
 }
