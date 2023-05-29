@@ -2,9 +2,8 @@ import { BaseConfig } from '../shared/services/models/data-access/config.model';
 
 export namespace ActionModel {
   export namespace LoadConfig {
-    export interface Success {
-      urlConfig: BaseConfig.Endpoints.ApiUrls;
-    }
+    export type Success = BaseConfig.Endpoints.ApiUrls;
+
 
     export interface Failure {
       error: any;

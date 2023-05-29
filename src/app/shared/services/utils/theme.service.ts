@@ -2,22 +2,29 @@ import { Inject, Injectable } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { fromEvent, mergeMap, startWith } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { WINDOW } from '../../providers/window.provider';
+
+const THEME_WRAPPER_ID = 'app-theme';
+const DARK_THEME_NAME = 'md-dark-indigo.css';
+const LIGHT_THEME_NAME = 'md-light-indigo.css';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ThemeService {
-  constructor(@Inject(DOCUMENT) private _document: Document) {}
+  constructor(
+    @Inject(WINDOW) private _window: (Window & typeof globalThis) | null,
+    @Inject(DOCUMENT) private _document: Document
+  ) {}
 
   public switchTheme() {
     const themeLink = this._document.getElementById(
-      'app-theme'
+      THEME_WRAPPER_ID
     ) as HTMLLinkElement;
-    const window = this._document.defaultView;
-    const darkMediaQuery: MediaQueryList = window?.matchMedia(
+    const darkMediaQuery: MediaQueryList = this._window?.matchMedia(
       '(prefers-color-scheme: dark)'
     ) as MediaQueryList;
-    const lightMediaQuery: MediaQueryList = window?.matchMedia(
+    const lightMediaQuery: MediaQueryList = this._window?.matchMedia(
       '(prefers-color-scheme: light)'
     ) as MediaQueryList;
     fromEvent<MediaQueryList>(darkMediaQuery, 'change')
@@ -38,10 +45,10 @@ export class ThemeService {
       .subscribe(currentTheme => {
         if (themeLink) {
           if (currentTheme.dark) {
-            themeLink.href = 'md-dark-indigo.css';
+            themeLink.href = DARK_THEME_NAME;
           }
           if (currentTheme.light) {
-            themeLink.href = 'md-light-indigo.css';
+            themeLink.href = LIGHT_THEME_NAME;
           }
         }
       });

@@ -4,11 +4,11 @@ import * as rootActions from './root-store.actions';
 
 export const rootStoreKey = 'rootStore';
 
-export interface State {
+export interface RootState {
   config: ViewModel.Config | null;
 }
 
-export const initialState: State = {
+export const initialState: RootState = {
   config: null,
 };
 
@@ -16,6 +16,11 @@ export const rootReducer = createReducer(
   initialState,
   on(
     rootActions.RootStoreConfigActions.loadConfigSuccess,
-    (state, config) => ({ ...state, config  })
+    (state, respConfig) => ({
+      ...state,
+      config: {
+        urlConfig: respConfig,
+      },
+    })
   )
 );

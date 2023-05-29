@@ -1,8 +1,6 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { BrowserModule } from '@angular/platform-browser';
-import { ThemeService } from './shared/services/utils/theme.service';
 
 @Component({
   standalone: true,
@@ -11,11 +9,10 @@ import { ThemeService } from './shared/services/utils/theme.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   title = 'swapi';
-  constructor(private themeService: ThemeService) {}
 
-  ngOnInit(): void {
-    this.themeService.switchTheme();
-  }
+  constructor() {}
 }
+
+// TODO: 1 Сделать селекторы для конфига, 2 Добавить экшены и селекторы в фасад, 3 добавить редьюсер для конфига, 4

@@ -1,13 +1,12 @@
 export namespace BaseConfig {
   export namespace Endpoints {
     export interface ApiUrls {
-      rootApi: string;
-      planetListUrl: string;
-      singlePlanetUrl: string;
-      personListUrl: string;
-      singlePersonUrl: string;
-      shipListUrl: string;
-      singleShipUrl: string;
+      films: string;
+      people: string;
+      planets: string;
+      species: string;
+      starships: string;
+      vehicles: string;
     }
   }
 }

@@ -25,6 +25,7 @@
     "@ngrx/router-store": "^16.0.0",
     "@ngrx/store": "^16.0.0",
     "@ngrx/store-devtools": "^16.0.0",
+    "ngx-logger": "^5.0.12",
     "primeflex": "^3.3.0",
     "primeicons": "^6.0.1",
     "primeng": "^16.0.0-rc.2",
