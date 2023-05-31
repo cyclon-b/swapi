@@ -1,0 +1,14 @@
+.swapi-home-logo {
+  @media (max-width: 411px ) {
+    font-size: 0.20rem;
+  }
+  @media (max-width: 640px) {
+    font-size: 0.20rem;
+  }
+  @media (min-width: 768px) {
+    font-size: 0.45rem;
+  }
+  @media (min-width: 1024px) {
+    font-size: 0.7rem;
+  }
+}
