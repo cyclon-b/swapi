@@ -1,7 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MenubarModule } from 'primeng/menubar';
-import { MenuItem } from 'primeng/api';
 import { RootStoreFacade } from '../../store/root-store.facade';
 
 @Component({

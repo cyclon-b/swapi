@@ -3,8 +3,8 @@ import { APP_INITIALIZER, importProvidersFrom, isDevMode } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { rootRoutes } from './app/root.routes';
 import { bootstrapApplication } from '@angular/platform-browser';
-import { provideStore } from '@ngrx/store';
-import { EffectsModule, provideEffects } from '@ngrx/effects';
+import { provideStore, StoreModule } from '@ngrx/store';
+import { provideEffects } from '@ngrx/effects';
 import { provideRouterStore } from '@ngrx/router-store';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { rootReducer } from './app/store/root-store.reducer';
@@ -14,6 +14,7 @@ import { LoggerModule, NGXLogger, NgxLoggerLevel } from 'ngx-logger';
 import { ThemeService } from './app/shared/services/utils/theme.service';
 import { RootStoreFacade } from './app/store/root-store.facade';
 import { RootStoreEffects } from './app/store/root-store.effects';
+import { peopleStoreReducer } from './app/view/people/store/people-store.reducer';
 
 export function configInitFactory(rootFacade: RootStoreFacade): () => void {
   return () => rootFacade.getConfig();
