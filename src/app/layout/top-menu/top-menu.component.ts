@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MenubarModule } from 'primeng/menubar';
 import { MenuItem } from 'primeng/api';
+import { RootStoreFacade } from '../../store/root-store.facade';
 
 @Component({
   selector: 'swapi-top-menu',
@@ -11,9 +12,5 @@ import { MenuItem } from 'primeng/api';
   styleUrls: ['./top-menu.component.scss'],
 })
 export class TopMenuComponent {
-
-  public items: MenuItem[] = [
-    {label: 'Home', icon: 'pi-home pi pi-fw', routerLink: [''] }
-  ]
-
+  public rootFacade = inject(RootStoreFacade);
 }

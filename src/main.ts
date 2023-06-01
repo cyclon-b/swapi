@@ -16,7 +16,7 @@ import { RootStoreFacade } from './app/store/root-store.facade';
 import { RootStoreEffects } from './app/store/root-store.effects';
 
 export function configInitFactory(rootFacade: RootStoreFacade): () => void {
-  return () => rootFacade.getUrlConfig();
+  return () => rootFacade.getConfig();
 }
 
 export function themeDetectionInitFactory(
@@ -44,7 +44,7 @@ bootstrapApplication(AppComponent, {
     ),
     importProvidersFrom(FormsModule),
     importProvidersFrom(ReactiveFormsModule),
-    provideStore({ root: rootReducer }),
+    provideStore({ rootStore: rootReducer }),
     provideEffects([RootStoreEffects]),
     provideRouterStore(),
     provideHttpClient(),

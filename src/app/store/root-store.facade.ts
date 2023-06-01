@@ -4,7 +4,7 @@ import { RootStoreConfigActions } from './root-store.actions';
 import * as rootStoreSelectors from './root-store.selectors';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class RootStoreFacade {
   private _store = inject(Store);
@@ -13,7 +13,11 @@ export class RootStoreFacade {
     select(rootStoreSelectors.Config.getUrlConfig)
   );
 
-  public getUrlConfig() {
+  public selectedTopMenuConfig$ = this._store.pipe(
+    select(rootStoreSelectors.Config.getTopMenuConfig)
+  );
+
+  public getConfig() {
     this.dispatch(RootStoreConfigActions.loadConfigStart());
   }
 

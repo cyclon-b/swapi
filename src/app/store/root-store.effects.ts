@@ -15,13 +15,14 @@ export class RootStoreEffects {
     this._actions$.pipe(
       ofType(RootStoreConfigActions.loadConfigStart),
       switchMap(() =>
-        this._configService
-          .getUrlConfig()
-          .pipe(
-            map(response =>
-              rootActions.RootStoreConfigActions.loadConfigSuccess(response)
-            )
+        this._configService.getUrlConfig().pipe(
+          map(response =>
+            rootActions.RootStoreConfigActions.loadConfigSuccess({
+              urlConfig: response,
+              topMenuConfig: this._configService.getTopMenuConfig(),
+            })
           )
+        )
       )
     )
   );

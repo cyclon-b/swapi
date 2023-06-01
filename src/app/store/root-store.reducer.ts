@@ -16,10 +16,10 @@ export const rootReducer = createReducer(
   initialState,
   on(
     rootActions.RootStoreConfigActions.loadConfigSuccess,
-    (state, respConfig) => ({
+    (state, loadedConfig) => ({
       ...state,
       config: {
-        urlConfig: respConfig,
+        ...loadedConfig,
       },
     })
   )
