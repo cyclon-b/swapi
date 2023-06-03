@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { TopMenuComponent } from './layout/top-menu/top-menu.component';
+import { TopMenuComponent } from './layout/components/top-menu/top-menu.component';
+import { RootStoreFacade } from './store/root-store.facade';
 
 @Component({
   standalone: true,
@@ -9,11 +10,8 @@ import { TopMenuComponent } from './layout/top-menu/top-menu.component';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
-  title = 'swapi';
-
-  constructor() {}
+  public rootFacade = inject(RootStoreFacade);
 }
-
-// TODO: 1 Сделать селекторы для конфига, 2 Добавить экшены и селекторы в фасад, 3 добавить редьюсер для конфига, 4

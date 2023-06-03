@@ -1,7 +1,7 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MenubarModule } from 'primeng/menubar';
-import { RootStoreFacade } from '../../store/root-store.facade';
+import { MenuItem } from 'primeng/api';
 
 @Component({
   selector: 'swapi-top-menu',
@@ -9,7 +9,8 @@ import { RootStoreFacade } from '../../store/root-store.facade';
   imports: [CommonModule, MenubarModule],
   templateUrl: './top-menu.component.html',
   styleUrls: ['./top-menu.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TopMenuComponent {
-  public rootFacade = inject(RootStoreFacade);
+  @Input() public menuItems: MenuItem[];
 }

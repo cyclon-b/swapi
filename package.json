@@ -1,5 +1,8 @@
 {
   "name": "swapi",
+  "author": "Gennady Artamonov",
+  "license": "MIT",
+  "description": "Simple web client for https://swapi.dev",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
