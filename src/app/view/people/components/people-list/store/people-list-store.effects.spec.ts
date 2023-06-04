@@ -2,21 +2,21 @@ import { TestBed } from '@angular/core/testing';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { Observable } from 'rxjs';
 
-import { PeopleStoreEffects } from './people-store.effects';
+import { PeopleListStoreEffects } from './people-list-store.effects';
 
-describe('PeopleStoreEffects', () => {
+describe('PeopleListStoreEffects', () => {
   let actions$: Observable<any>;
-  let effects: PeopleStoreEffects;
+  let effects: PeopleListStoreEffects;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
-        PeopleStoreEffects,
+        PeopleListStoreEffects,
         provideMockActions(() => actions$)
       ]
     });
 
-    effects = TestBed.inject(PeopleStoreEffects);
+    effects = TestBed.inject(PeopleListStoreEffects);
   });
 
   it('should be created', () => {

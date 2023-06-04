@@ -14,7 +14,6 @@ import { LoggerModule, NGXLogger, NgxLoggerLevel } from 'ngx-logger';
 import { ThemeService } from './app/shared/services/utils/theme.service';
 import { RootStoreFacade } from './app/store/root-store.facade';
 import { RootStoreEffects } from './app/store/root-store.effects';
-import { peopleStoreReducer } from './app/view/people/store/people-store.reducer';
 
 export function configInitFactory(rootFacade: RootStoreFacade): () => void {
   return () => rootFacade.getConfig();

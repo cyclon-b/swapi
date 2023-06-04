@@ -6,6 +6,7 @@ import { RootStoreConfigActions } from './root-store.actions';
 import { switchMap } from 'rxjs';
 import { map } from 'rxjs/operators';
 
+// TODO: Разделить полусение меню и урлов
 @Injectable()
 export class RootStoreEffects {
   private _actions$ = inject(Actions);

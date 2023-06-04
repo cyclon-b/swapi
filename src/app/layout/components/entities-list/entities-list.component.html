@@ -1,1 +1,7 @@
-<p>entities-list works!</p>
+<div class="grid" *ngIf="entitiesLis?.length; else progressBar">
+
+</div>
+
+<ng-template #progressBar>
+  <p-progressBar mode="indeterminate" [style]="{ height: '6px' }"></p-progressBar>
+</ng-template>

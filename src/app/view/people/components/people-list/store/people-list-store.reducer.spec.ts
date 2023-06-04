@@ -1,11 +1,11 @@
-import { peopleStoreReducer, initialState } from './people-store.reducer';
+import { peopleListReducer, initialState } from './people-list-store.reducer';
 
-describe('PeopleStore Reducer', () => {
+describe('PeopleListStore Reducer', () => {
   describe('an unknown action', () => {
     it('should return the previous state', () => {
       const action = {} as any;
 
-      const result = peopleStoreReducer(initialState, action);
+      const result = peopleListReducer(initialState, action);
 
       expect(result).toBe(initialState);
     });
