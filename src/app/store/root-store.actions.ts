@@ -7,6 +7,5 @@ export const RootStoreConfigActions = createActionGroup({
     'Load config start': emptyProps(),
     'Load config success': props<ActionModel.LoadConfig.Success>(),
     'Load config failure': props<ActionModel.LoadConfig.Failure>(),
-    'Reset config': emptyProps(),
   },
 });

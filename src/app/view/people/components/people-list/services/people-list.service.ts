@@ -11,6 +11,7 @@ export class PeopleListService {
   private _http = inject(HttpClient);
 
   public getPeopleList(url: string): Observable<PersonEntity[]> {
+    console.warn(url);
     return this._http
       .get(url)
       .pipe(map((resp: PersonResponseModel) => resp?.results));

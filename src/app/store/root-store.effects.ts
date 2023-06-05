@@ -1,10 +1,9 @@
 import { inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { ConfigService } from '../shared/services/utils/config.service';
-import * as rootActions from './root-store.actions';
 import { RootStoreConfigActions } from './root-store.actions';
-import { switchMap } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { of, switchMap } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 
 // TODO: Разделить полусение меню и урлов
 @Injectable()
@@ -18,12 +17,15 @@ export class RootStoreEffects {
       switchMap(() =>
         this._configService.getUrlConfig().pipe(
           map(response =>
-            rootActions.RootStoreConfigActions.loadConfigSuccess({
+            RootStoreConfigActions.loadConfigSuccess({
               urlConfig: response,
               topMenuConfig: this._configService.getTopMenuConfig(),
             })
           )
         )
+      ),
+      catchError(e =>
+        of(RootStoreConfigActions.loadConfigFailure({ error: e }))
       )
     )
   );
