@@ -26,9 +26,14 @@ export class PeopleListStoreEffects {
 
       switchMap(({ url }) => {
         return this._peopleLitService.getPeopleList(url).pipe(
-          map(response => {
+          map(({ next, results, count, previous }) => {
             return PeopleListStoreActions.loadPeopleListSuccess({
-              entities: response,
+              paginationData: {
+                next,
+                previous,
+                count,
+              },
+              entities: results,
             });
           })
         );

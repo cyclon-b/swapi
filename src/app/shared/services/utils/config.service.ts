@@ -1,5 +1,9 @@
 import { inject, Injectable } from '@angular/core';
-import { TOP_MENU_ITEMS, URL_CONFIG } from '../../../../assets/data/config';
+import {
+  ROWS_PER_PAGE,
+  TOP_MENU_ITEMS,
+  URL_CONFIG,
+} from '../../../../assets/data/config';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { BaseConfig } from '../models/data-access/config.model';
@@ -21,5 +25,9 @@ export class ConfigService {
 
   public getUrlConfig(): Observable<BaseConfig.Endpoints.ApiUrls> {
     return this._http.get<BaseConfig.Endpoints.ApiUrls>(this.getRootApi());
+  }
+
+  public getRowsPerPage(): number {
+    return ROWS_PER_PAGE;
   }
 }

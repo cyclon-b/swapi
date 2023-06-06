@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EntitiesListComponent } from '../../../../layout/components/entities-list/entities-list.component';
 import { PeopleListStoreFacade } from './store/people-list-store.facade';
+import { PaginatorState } from 'primeng/paginator';
 
 @Component({
   selector: 'swapi-people-list',
@@ -13,4 +14,8 @@ import { PeopleListStoreFacade } from './store/people-list-store.facade';
 })
 export class PeopleListComponent {
   public peopleFacade = inject(PeopleListStoreFacade);
+
+  onPageChange($event: PaginatorState) {
+    console.warn($event);
+  }
 }

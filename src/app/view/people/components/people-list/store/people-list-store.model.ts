@@ -1,4 +1,4 @@
-import { PersonEntity } from '../models/people-list.model';
+import { PersonEntity, PersonResponseModel } from '../models/people-list.model';
 
 export namespace ActionModel {
   export namespace Load {
@@ -6,6 +6,7 @@ export namespace ActionModel {
       url?: string;
     }
     export interface Success {
+      paginationData: Omit<PersonResponseModel, 'results'>;
       entities: PersonEntity[];
     }
 

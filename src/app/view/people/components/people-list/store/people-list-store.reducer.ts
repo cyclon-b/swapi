@@ -1,11 +1,12 @@
 import { createFeature, createReducer, on } from '@ngrx/store';
 import { PeopleListStoreActions } from './people-list-store.actions';
 import { createEntityAdapter, EntityState } from '@ngrx/entity';
-import { PersonEntity } from '../models/people-list.model';
+import { PersonEntity, PersonResponseModel } from '../models/people-list.model';
 
 export const peopleListStoreFeatureKey = 'peopleListStore';
 
 export interface State {
+  paginationData: Omit<PersonResponseModel, 'results'>;
   peopleList: EntityState<PersonEntity>;
   error: any;
 }
@@ -14,16 +15,21 @@ export const PeopleListAdapter = createEntityAdapter<PersonEntity>({
   selectId: person => person?.url,
 });
 export const initialState: State = {
+  paginationData: null,
   peopleList: PeopleListAdapter.getInitialState(),
   error: null,
 };
 
 export const peopleListReducer = createReducer(
   initialState,
-  on(PeopleListStoreActions.loadPeopleListSuccess, (state, { entities }) => ({
-    ...state,
-    peopleList: PeopleListAdapter.setAll(entities, state.peopleList),
-  })),
+  on(
+    PeopleListStoreActions.loadPeopleListSuccess,
+    (state, { entities, paginationData }) => ({
+      ...state,
+      paginationData,
+      peopleList: PeopleListAdapter.setAll(entities, state.peopleList),
+    })
+  ),
   on(PeopleListStoreActions.loadPeopleListFailure, (state, { error }) => ({
     ...state,
     error,

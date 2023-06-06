@@ -14,6 +14,10 @@ export class PeopleListStoreFacade {
     select(peopleListSelectors.getPeopleList)
   );
 
+  public selectedPeoplePaginationData$ = this._store.pipe(
+    select(peopleListSelectors.getPeoplePaginationData)
+  );
+
   public loadPeopleListStart(url = '') {
     this.dispatch(PeopleListStoreActions.loadPeopleListStart({ url }));
   }

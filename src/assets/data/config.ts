@@ -20,3 +20,5 @@ export const TOP_MENU_ITEMS = [
     routerLink: ['starships'],
   },
 ];
+
+export const ROWS_PER_PAGE = 10;
