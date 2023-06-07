@@ -7,7 +7,7 @@ export const TOP_MENU_ITEMS = [
   {
     label: 'People',
     icon: 'pi-users pi pi-fw',
-    routerLink: ['people'],
+    routerLink: ['people', 'page', '1'],
   },
   {
     label: 'Planets',

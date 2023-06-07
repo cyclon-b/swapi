@@ -12,7 +12,7 @@ export const peopleRoutes: Routes = [
     path: '',
     children: [
       {
-        path: '',
+        path: 'page/:id',
         component: PeopleListComponent,
         providers: [
           provideState(peopleListStoreFeature),

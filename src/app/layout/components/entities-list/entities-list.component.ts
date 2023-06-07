@@ -5,7 +5,6 @@ import {
   inject,
   Input,
   Output,
-  signal,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
@@ -17,6 +16,7 @@ import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
 import { PaginatorModule, PaginatorState } from 'primeng/paginator';
 import { ConfigService } from '../../../shared/services/utils/config.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'swapi-entities-list',
@@ -41,17 +41,16 @@ export class EntitiesListComponent {
     url: string;
   }>();
 
-  public currentPage = signal(0);
-
   public config = inject(ConfigService);
+  private _router = inject(Router);
 
   public trackByUrl(index: number, item: BaseEntityModel): string {
     return item?.url;
   }
 
   public changePageState(e: PaginatorState) {
-    this.currentPage.set(e.page);
+    this._router.navigate(['people', 'page', `${e.page + 1}`]);
   }
 }
 
-// TODO: Доделать логику пагинатора для текущего апи
+// TODO: Доделать логику пагинатора для текущего апи добавить router state
