@@ -16,7 +16,7 @@ import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
 import { PaginatorModule, PaginatorState } from 'primeng/paginator';
 import { ConfigService } from '../../../shared/services/utils/config.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'swapi-entities-list',
@@ -42,14 +42,9 @@ export class EntitiesListComponent {
   }>();
 
   public config = inject(ConfigService);
-  private _router = inject(Router);
 
   public trackByUrl(index: number, item: BaseEntityModel): string {
     return item?.url;
-  }
-
-  public changePageState(e: PaginatorState) {
-    this._router.navigate(['people', 'page', `${e.page + 1}`]);
   }
 }
 

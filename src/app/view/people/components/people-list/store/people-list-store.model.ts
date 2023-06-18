@@ -4,6 +4,7 @@ export namespace ActionModel {
   export namespace Load {
     export interface Start {
       url?: string;
+      pageNumber: number;
     }
     export interface Success {
       paginationData: Omit<PersonResponseModel, 'results'>;

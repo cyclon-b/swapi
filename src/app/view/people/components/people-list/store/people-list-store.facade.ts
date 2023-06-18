@@ -2,7 +2,6 @@ import { inject, Injectable } from '@angular/core';
 import { Action, select, Store } from '@ngrx/store';
 import { PeopleListStoreActions } from './people-list-store.actions';
 import * as peopleListSelectors from './people-list-store.selectors';
-import { first } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -18,8 +17,10 @@ export class PeopleListStoreFacade {
     select(peopleListSelectors.getPeoplePaginationData)
   );
 
-  public loadPeopleListStart(url = '') {
-    this.dispatch(PeopleListStoreActions.loadPeopleListStart({ url }));
+  public loadPeopleListStart(url = '', pageNumber: number) {
+    this.dispatch(
+      PeopleListStoreActions.loadPeopleListStart({ url, pageNumber })
+    );
   }
 
   public dispatch(action: Action) {

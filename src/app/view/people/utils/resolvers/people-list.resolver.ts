@@ -11,11 +11,11 @@ export const peopleListResolver: ResolveFn<Observable<true>> = (
 ) => {
   const peopleFacade = inject(PeopleListStoreFacade);
   const rootFacade = inject(RootStoreFacade);
-
+  const currentPage = route.params['id'];
   return rootFacade.selectedUrlConfig$.pipe(
     skipWhile(config => !config?.people),
     tap(urlConfig => {
-      peopleFacade.loadPeopleListStart(urlConfig?.people);
+      peopleFacade.loadPeopleListStart(urlConfig?.people, currentPage);
     }),
     map(config => true)
   );

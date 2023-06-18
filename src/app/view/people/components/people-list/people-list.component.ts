@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { EntitiesListComponent } from '../../../../layout/components/entities-list/entities-list.component';
 import { PeopleListStoreFacade } from './store/people-list-store.facade';
 import { PaginatorState } from 'primeng/paginator';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'swapi-people-list',
@@ -14,8 +15,11 @@ import { PaginatorState } from 'primeng/paginator';
 })
 export class PeopleListComponent {
   public peopleFacade = inject(PeopleListStoreFacade);
+  private _router = inject(Router);
+  private _route = inject(ActivatedRoute);
 
-  onPageChange($event: PaginatorState) {
-    console.warn($event);
+  async onPageChange($event: PaginatorState) {
+    const normalizedPageNumber = $event.page + 1;
+    await this._router.navigate(['people', 'page', normalizedPageNumber]);
   }
 }
