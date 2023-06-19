@@ -1,10 +1,16 @@
 import {
+  AfterContentInit,
+  AfterViewInit,
   ChangeDetectionStrategy,
   Component,
   EventEmitter,
   inject,
   Input,
+  OnChanges,
+  OnInit,
   Output,
+  SimpleChanges,
+  ViewChild,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
@@ -14,7 +20,7 @@ import {
 import { ProgressBarModule } from 'primeng/progressbar';
 import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
-import { PaginatorModule, PaginatorState } from 'primeng/paginator';
+import { Paginator, PaginatorModule, PaginatorState } from 'primeng/paginator';
 import { ConfigService } from '../../../shared/services/utils/config.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -35,11 +41,15 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class EntitiesListComponent {
   @Input() public entitiesLis: BaseEntityModel[] = [];
   @Input() public paginationData: Omit<BaseResponseModel, 'results'>;
+  @Input() public currentPage: number;
+  @Input() public paginatorEnabled: boolean;
   @Output() public changePage = new EventEmitter<PaginatorState>();
   @Output() public openSinglePage = new EventEmitter<{
     name: string;
     url: string;
   }>();
+
+  public test: number;
 
   public config = inject(ConfigService);
 

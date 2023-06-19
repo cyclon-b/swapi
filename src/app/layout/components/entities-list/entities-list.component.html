@@ -12,7 +12,8 @@
 
   </div>
 </div>
-<p-paginator (onPageChange)="changePage.emit($event)" [first]="1" *ngIf="paginationData && paginationData?.count" [totalRecords]="paginationData.count"
+<p-paginator (onPageChange)="changePage.emit($event)" [first]="currentPage * 10" *ngIf="paginatorEnabled"
+             [totalRecords]="paginationData?.count"
              [rows]="config.getRowsPerPage()"></p-paginator>
 <ng-template #progressBar>
   <p-progressBar mode="indeterminate" [style]="{ height: '6px' }"></p-progressBar>

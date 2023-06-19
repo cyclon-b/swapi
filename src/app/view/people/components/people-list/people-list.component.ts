@@ -14,9 +14,10 @@ import { ActivatedRoute, Router } from '@angular/router';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PeopleListComponent {
-  public peopleFacade = inject(PeopleListStoreFacade);
   private _router = inject(Router);
   private _route = inject(ActivatedRoute);
+  public peopleFacade = inject(PeopleListStoreFacade);
+  public currentPage = this._route.snapshot.params['id'] - 1;
 
   async onPageChange($event: PaginatorState) {
     const normalizedPageNumber = $event.page + 1;
