@@ -1,7 +1,6 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import * as fromPeopleListStore from './people-list-store.reducer';
 import { PeopleListAdapter } from './people-list-store.reducer';
-import { state } from '@angular/animations';
 
 export const selectPeopleListStoreState =
   createFeatureSelector<fromPeopleListStore.State>(
@@ -15,4 +14,9 @@ export const getPeopleList = createSelector(selectPeopleListStoreState, state =>
 export const getPeoplePaginationData = createSelector(
   selectPeopleListStoreState,
   state => state.paginationData
+);
+
+export const getPeoplePending = createSelector(
+  selectPeopleListStoreState,
+  state => state.pending
 );

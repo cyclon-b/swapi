@@ -17,10 +17,22 @@ export class PeopleListStoreFacade {
     select(peopleListSelectors.getPeoplePaginationData)
   );
 
+  public selectedPendingStatus$ = this._store.pipe(
+    select(peopleListSelectors.getPeoplePending)
+  );
+
   public loadPeopleListStart(url = '', pageNumber: number) {
     this.dispatch(
       PeopleListStoreActions.loadPeopleListStart({ url, pageNumber })
     );
+  }
+
+  public togglePendingStatus(isPending: boolean) {
+    this.dispatch(PeopleListStoreActions.loadPeopleListPending({ isPending }));
+  }
+
+  public resetPeopleListState() {
+    this.dispatch(PeopleListStoreActions.resetPeopleListState());
   }
 
   public dispatch(action: Action) {

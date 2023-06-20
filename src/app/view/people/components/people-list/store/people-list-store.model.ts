@@ -10,7 +10,9 @@ export namespace ActionModel {
       paginationData: Omit<PersonResponseModel, 'results'>;
       entities: PersonEntity[];
     }
-
+    export interface Pending {
+      isPending: boolean;
+    }
     export interface Failure {
       error: any;
     }

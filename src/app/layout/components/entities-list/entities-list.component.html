@@ -3,7 +3,10 @@
     <h1>PEOPLE</h1>
   </div>
 </div>
-<div class="grid" *ngIf="entitiesLis?.length; else progressBar">
+<ng-container *ngIf="entitiesListPending">
+  <p-progressBar mode="indeterminate" [style]="{ height: '6px' }"></p-progressBar>
+</ng-container>
+<div class="grid" *ngIf="entitiesLis?.length">
 
   <div class="my-3 col-12 md:col-6" *ngFor="let entity of entitiesLis; trackBy: trackByUrl">
     <p-card [header]="entity.name">
@@ -15,6 +18,4 @@
 <p-paginator (onPageChange)="changePage.emit($event)" [first]="currentPage * 10" *ngIf="paginatorEnabled"
              [totalRecords]="paginationData?.count"
              [rows]="config.getRowsPerPage()"></p-paginator>
-<ng-template #progressBar>
-  <p-progressBar mode="indeterminate" [style]="{ height: '6px' }"></p-progressBar>
-</ng-template>
+

@@ -7,6 +7,7 @@ export const PeopleListStoreActions = createActionGroup({
     'Load people list start': props<ActionModel.Load.Start>(),
     'Load people list success': props<ActionModel.Load.Success>(),
     'Load people list failure': props<ActionModel.Load.Failure>(),
+    'Load people list pending': props<ActionModel.Load.Pending>(),
     'Reset people list state': emptyProps(),
   },
 });

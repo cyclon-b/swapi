@@ -1,7 +1,7 @@
 <div class="grid">
   <div class="col">
     <swapi-entities-list [paginatorEnabled]="true" [currentPage]="currentPage" [entitiesLis]="peopleFacade.selectedAllPeopleList$ | async"
-                         [paginationData]="peopleFacade.selectedPeoplePaginationData$ |async" (changePage)="onPageChange($event)"></swapi-entities-list>
+                         [paginationData]="peopleFacade.selectedPeoplePaginationData$ |async" (changePage)="onPageChange($event)" [entitiesListPending]="peopleFacade.selectedPendingStatus$ | async"></swapi-entities-list>
   </div>
 </div>
 

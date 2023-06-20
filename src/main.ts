@@ -3,9 +3,9 @@ import { APP_INITIALIZER, importProvidersFrom, isDevMode } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { rootRoutes } from './app/root.routes';
 import { bootstrapApplication } from '@angular/platform-browser';
-import { provideStore, StoreModule } from '@ngrx/store';
+import { provideStore } from '@ngrx/store';
 import { provideEffects } from '@ngrx/effects';
-import { provideRouterStore } from '@ngrx/router-store';
+import { provideRouterStore, routerReducer } from '@ngrx/router-store';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { rootReducer } from './app/store/root-store.reducer';
 import { provideHttpClient } from '@angular/common/http';
@@ -44,7 +44,7 @@ bootstrapApplication(AppComponent, {
     ),
     importProvidersFrom(FormsModule),
     importProvidersFrom(ReactiveFormsModule),
-    provideStore({ rootStore: rootReducer }),
+    provideStore({ rootStore: rootReducer, router: routerReducer }),
     provideEffects([RootStoreEffects]),
     provideRouterStore(),
     provideHttpClient(),

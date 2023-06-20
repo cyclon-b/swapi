@@ -8,6 +8,7 @@ export const peopleListStoreFeatureKey = 'peopleListStore';
 export interface State {
   paginationData: Omit<PersonResponseModel, 'results'>;
   peopleList: EntityState<PersonEntity>;
+  pending: boolean;
   error: any;
 }
 
@@ -17,6 +18,7 @@ export const PeopleListAdapter = createEntityAdapter<PersonEntity>({
 export const initialState: State = {
   paginationData: null,
   peopleList: PeopleListAdapter.getInitialState(),
+  pending: true,
   error: null,
 };
 
@@ -28,8 +30,13 @@ export const peopleListReducer = createReducer(
       ...state,
       paginationData,
       peopleList: PeopleListAdapter.setAll(entities, state.peopleList),
+      pending: false,
     })
   ),
+  on(PeopleListStoreActions.loadPeopleListPending, (state, { isPending }) => ({
+    ...state,
+    pending: isPending,
+  })),
   on(PeopleListStoreActions.loadPeopleListFailure, (state, { error }) => ({
     ...state,
     error,
