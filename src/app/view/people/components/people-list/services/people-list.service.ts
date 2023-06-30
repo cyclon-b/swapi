@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { PersonResponseModel } from '../models/people-list.model';
+import { PersonResponseModel } from '../../models/people-list.model';
 import { BaseContentService } from '../../../../../shared/services/xhr/base-content.service';
 
 @Injectable({

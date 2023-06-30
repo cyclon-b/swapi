@@ -3,9 +3,13 @@ import { PeopleListComponent } from './components/people-list/people-list.compon
 import { provideState } from '@ngrx/store';
 
 import { provideEffects } from '@ngrx/effects';
-import { peopleListStoreFeature } from './components/people-list/store/people-list-store.reducer';
-import { PeopleListStoreEffects } from './components/people-list/store/people-list-store.effects';
-import { peopleListResolver } from './utils/resolvers/people-list.resolver';
+import { peopleStoreFeature } from './components/people-list/store/people-store.reducer';
+import { PeopleStoreEffects } from './components/people-list/store/people-store.effects';
+import { peopleResolver } from './utils/resolvers/people.resolver';
+import { SinglePersonComponent } from './components/single-person/single-person.component';
+import { singlePersonStoreFeature } from './components/single-person/store/single-person-store.reducer';
+import { SinglePersonStoreEffects } from './components/single-person/store/single-person-store.effects';
+import { singlePersonResolver } from './utils/resolvers/single-person.resolver';
 
 export const peopleRoutes: Routes = [
   {
@@ -15,13 +19,25 @@ export const peopleRoutes: Routes = [
         path: 'page/:id',
         component: PeopleListComponent,
         providers: [
-          provideState(peopleListStoreFeature),
-          provideEffects([PeopleListStoreEffects]),
+          provideState(peopleStoreFeature),
+          provideEffects([PeopleStoreEffects]),
         ],
         resolve: {
-          peopleList: peopleListResolver,
+          peopleList: peopleResolver,
         },
       },
     ],
+  },
+
+  {
+    path: 'single-person/:url',
+    component: SinglePersonComponent,
+    providers: [
+      provideState(singlePersonStoreFeature),
+      provideEffects([SinglePersonStoreEffects]),
+    ],
+    resolve: {
+      singlePerson: singlePersonResolver,
+    },
   },
 ];

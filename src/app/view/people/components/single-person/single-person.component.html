@@ -1,1 +1,25 @@
-<p>single-person works!</p>
+<div *ngIf="singlePersonFacade.selectedPersonData$ | async as person" class="grid p-3">
+  <div class="col">
+    <p-card header="{{person?.name}}">
+      <p class="m-0">
+        Height: {{person?.height}}
+      </p>
+      <p class="m-0">
+        Mass: {{person?.mass}}
+      </p>
+      <p class="m-0">
+        Skin color: {{person?.skin_color}}
+      </p>
+      <p class="m-0">
+        Eye color: {{person?.eye_color}}
+      </p>
+      <p class="m-0">
+        Gender: {{person?.gender}}
+      </p>
+      <p-divider></p-divider>
+      <p class="m-0">
+        Birth year: {{person?.birth_year}}
+      </p>
+    </p-card>
+  </div>
+</div>

@@ -37,6 +37,7 @@ export class EntitiesListComponent {
   @Input() public currentPage: number;
   @Input() public paginatorEnabled: boolean;
   @Input() public entitiesListPending: boolean;
+  @Input() public moreDetailHandler: Function;
   @Output() public changePage = new EventEmitter<PaginatorState>();
   @Output() public openSinglePage = new EventEmitter<{
     name: string;
@@ -44,6 +45,10 @@ export class EntitiesListComponent {
   }>();
 
   public config = inject(ConfigService);
+
+  constructor() {
+    this.moreDetailHandler = v => v;
+  }
 
   public trackByUrl(index: number, item: BaseEntityModel): string {
     return item?.url;

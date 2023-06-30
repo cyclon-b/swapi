@@ -1,11 +1,11 @@
 import { TestBed } from '@angular/core/testing';
 import { ResolveFn } from '@angular/router';
 
-import { peopleListResolver } from './people-list.resolver';
+import { singlePersonResolver } from './single-person.resolver';
 
-describe('peopleListResolver', () => {
+describe('singlePersonResolver', () => {
   const executeResolver: ResolveFn<boolean> = (...resolverParameters) => 
-      TestBed.runInInjectionContext(() => peopleListResolver(...resolverParameters));
+      TestBed.runInInjectionContext(() => singlePersonResolver(...resolverParameters));
 
   beforeEach(() => {
     TestBed.configureTestingModule({});

@@ -1,12 +1,12 @@
 import { inject, Injectable } from '@angular/core';
 import { Action, select, Store } from '@ngrx/store';
-import { PeopleListStoreActions } from './people-list-store.actions';
-import * as peopleListSelectors from './people-list-store.selectors';
+import { PeopleStoreActions } from './people-store.actions';
+import * as peopleListSelectors from './people-store.selectors';
 
 @Injectable({
   providedIn: 'root',
 })
-export class PeopleListStoreFacade {
+export class PeopleStoreFacade {
   private _store = inject(Store);
 
   public selectedAllPeopleList$ = this._store.pipe(
@@ -22,17 +22,15 @@ export class PeopleListStoreFacade {
   );
 
   public loadPeopleListStart(url = '', pageNumber: number) {
-    this.dispatch(
-      PeopleListStoreActions.loadPeopleListStart({ url, pageNumber })
-    );
+    this.dispatch(PeopleStoreActions.loadPeopleStart({ url, pageNumber }));
   }
 
   public togglePendingStatus(isPending: boolean) {
-    this.dispatch(PeopleListStoreActions.loadPeopleListPending({ isPending }));
+    this.dispatch(PeopleStoreActions.loadPeoplePending({ isPending }));
   }
 
   public resetPeopleListState() {
-    this.dispatch(PeopleListStoreActions.resetPeopleListState());
+    this.dispatch(PeopleStoreActions.resetPeopleState());
   }
 
   public dispatch(action: Action) {

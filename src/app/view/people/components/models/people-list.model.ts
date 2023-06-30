@@ -1,7 +1,7 @@
 import {
   BaseEntityModel,
   BaseResponseModel,
-} from '../../../../../shared/models/base-response.model';
+} from '../../../../shared/models/base-response.model';
 
 export interface PersonResponseModel extends BaseResponseModel {
   results: PersonEntity[];

@@ -1,14 +1,21 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import * as fromPeopleListStore from './people-list-store.reducer';
-import { PeopleListAdapter } from './people-list-store.reducer';
+import * as fromPeopleListStore from './people-store.reducer';
+import { PeopleAdapter } from './people-store.reducer';
+import { find as _find } from 'lodash-es';
+import { PersonEntity } from '../../models/people-list.model';
 
 export const selectPeopleListStoreState =
   createFeatureSelector<fromPeopleListStore.State>(
-    fromPeopleListStore.peopleListStoreFeatureKey
+    fromPeopleListStore.peopleStoreFeatureKey
   );
 
 export const getPeopleList = createSelector(selectPeopleListStoreState, state =>
-  PeopleListAdapter.getSelectors().selectAll(state.peopleList)
+  PeopleAdapter.getSelectors().selectAll(state.peopleList)
+);
+
+export const getSinglePerson = createSelector(
+  getPeopleList,
+  (entities, { url }) => _find(entities, entity => entity?.url === url)
 );
 
 export const getPeoplePaginationData = createSelector(

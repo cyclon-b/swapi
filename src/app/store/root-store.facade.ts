@@ -17,6 +17,10 @@ export class RootStoreFacade {
     select(rootStoreSelectors.Config.getTopMenuConfig)
   );
 
+  public selectedRouteParams$ = this._store.pipe(
+    select(rootStoreSelectors.Router.getRouteParams)
+  );
+
   public getConfig() {
     this.dispatch(RootStoreConfigActions.loadConfigStart());
   }

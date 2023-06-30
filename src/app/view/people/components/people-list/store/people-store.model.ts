@@ -1,4 +1,7 @@
-import { PersonEntity, PersonResponseModel } from '../models/people-list.model';
+import {
+  PersonEntity,
+  PersonResponseModel,
+} from '../../models/people-list.model';
 
 export namespace ActionModel {
   export namespace Load {
