@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { PersonResponseModel } from '../../../models/people-list.model';
 import { BaseContentService } from '../../../../../shared/services/xhr/base-content.service';
+import { PlanetEntity } from '../../../models/planet.model';
 
 @Injectable({
   providedIn: 'root',
 })
-export class PeopleListService extends BaseContentService<PersonResponseModel> {}
+export class SinglePlanetService extends BaseContentService<PlanetEntity> {}

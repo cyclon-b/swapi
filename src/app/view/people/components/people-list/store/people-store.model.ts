@@ -1,7 +1,7 @@
 import {
   PersonEntity,
   PersonResponseModel,
-} from '../../models/people-list.model';
+} from '../../../models/people-list.model';
 
 export namespace ActionModel {
   export namespace Load {

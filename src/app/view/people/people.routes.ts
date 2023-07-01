@@ -5,7 +5,7 @@ import { provideState } from '@ngrx/store';
 import { provideEffects } from '@ngrx/effects';
 import { peopleStoreFeature } from './components/people-list/store/people-store.reducer';
 import { PeopleStoreEffects } from './components/people-list/store/people-store.effects';
-import { peopleResolver } from './utils/resolvers/people.resolver';
+import { peopleListResolver } from './utils/resolvers/people-list.resolver';
 import { SinglePersonComponent } from './components/single-person/single-person.component';
 import { singlePersonStoreFeature } from './components/single-person/store/single-person-store.reducer';
 import { SinglePersonStoreEffects } from './components/single-person/store/single-person-store.effects';
@@ -23,7 +23,7 @@ export const peopleRoutes: Routes = [
           provideEffects([PeopleStoreEffects]),
         ],
         resolve: {
-          peopleList: peopleResolver,
+          peopleList: peopleListResolver,
         },
       },
     ],

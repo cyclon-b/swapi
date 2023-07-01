@@ -12,7 +12,7 @@ export const TOP_MENU_ITEMS = [
   {
     label: 'Planets',
     icon: 'pi-globe pi pi-fw',
-    routerLink: ['planets'],
+    routerLink: ['planet', 'page', '1'],
   },
   {
     label: 'Starships',

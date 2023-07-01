@@ -4,23 +4,23 @@ import { createEntityAdapter, EntityState } from '@ngrx/entity';
 import {
   PersonEntity,
   PersonResponseModel,
-} from '../../models/people-list.model';
+} from '../../../models/people-list.model';
 
-export const peopleStoreFeatureKey = 'peopleStore';
+export const peopleListStoreFeatureKey = 'peopleListStore';
 
-export interface State {
+export interface PeopleListState {
   paginationData: Omit<PersonResponseModel, 'results'>;
   peopleList: EntityState<PersonEntity>;
   pending: boolean;
   error: any;
 }
 
-export const PeopleAdapter = createEntityAdapter<PersonEntity>({
+export const PeopleListAdapter = createEntityAdapter<PersonEntity>({
   selectId: person => person?.url,
 });
-export const initialState: State = {
+export const initialState: PeopleListState = {
   paginationData: null,
-  peopleList: PeopleAdapter.getInitialState(),
+  peopleList: PeopleListAdapter.getInitialState(),
   pending: true,
   error: null,
 };
@@ -32,7 +32,7 @@ export const peopleListReducer = createReducer(
     (state, { entities, paginationData }) => ({
       ...state,
       paginationData,
-      peopleList: PeopleAdapter.setAll(entities, state.peopleList),
+      peopleList: PeopleListAdapter.setAll(entities, state.peopleList),
       pending: false,
     })
   ),
@@ -48,6 +48,6 @@ export const peopleListReducer = createReducer(
 );
 
 export const peopleStoreFeature = createFeature({
-  name: peopleStoreFeatureKey,
+  name: peopleListStoreFeatureKey,
   reducer: peopleListReducer,
 });

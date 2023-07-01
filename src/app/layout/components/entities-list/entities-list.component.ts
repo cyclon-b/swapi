@@ -38,6 +38,7 @@ export class EntitiesListComponent {
   @Input() public paginatorEnabled: boolean;
   @Input() public entitiesListPending: boolean;
   @Input() public moreDetailHandler: Function;
+  @Input() public listTitle: string;
   @Output() public changePage = new EventEmitter<PaginatorState>();
   @Output() public openSinglePage = new EventEmitter<{
     name: string;

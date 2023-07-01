@@ -1,7 +1,6 @@
 import { createFeature, createReducer, on } from '@ngrx/store';
-import { PersonEntity } from '../../models/people-list.model';
+import { PersonEntity } from '../../../models/people-list.model';
 import { SinglePersonStoreActions } from './single-person-store.actions';
-import { PeopleStoreActions } from '../../people-list/store/people-store.actions';
 
 export const singlePersonStoreFeatureKey = 'singlePersonStore';
 
@@ -14,7 +13,7 @@ export interface SinglePersonState {
 export const initialState: SinglePersonState = {
   personData: null,
   error: null,
-  pending: false,
+  pending: true,
 };
 
 export const reducer = createReducer(
@@ -27,15 +26,18 @@ export const reducer = createReducer(
       pending: false,
     })
   ),
-  on(PeopleStoreActions.loadPeoplePending, (state, { isPending }) => ({
-    ...state,
-    pending: isPending,
-  })),
-  on(PeopleStoreActions.loadPeopleFailure, (state, { error }) => ({
+  on(
+    SinglePersonStoreActions.loadSinglePersonPending,
+    (state, { isPending }) => ({
+      ...state,
+      pending: isPending,
+    })
+  ),
+  on(SinglePersonStoreActions.loadSinglePersonFailure, (state, { error }) => ({
     ...state,
     error,
   })),
-  on(PeopleStoreActions.resetPeopleState, state => initialState)
+  on(SinglePersonStoreActions.resetSinglePersonState, state => initialState)
 );
 
 export const singlePersonStoreFeature = createFeature({

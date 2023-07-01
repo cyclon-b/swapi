@@ -1,0 +1,6 @@
+<div class="grid">
+  <div class="col">
+    <swapi-entities-list [listTitle]="'PLANETS'" [moreDetailHandler]="onMoreDetailClick" [paginatorEnabled]="true" [currentPage]="currentPage()" [entitiesLis]="planetFacade.selectedAllPlanetList$ | async"
+                         [paginationData]="planetFacade.selectedPlanetListPaginationData$ |async" (changePage)="onPageChange($event)" [entitiesListPending]="planetFacade.selectedPendingStatus$ | async"></swapi-entities-list>
+  </div>
+</div>

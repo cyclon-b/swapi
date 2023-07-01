@@ -7,17 +7,17 @@ import * as peopleListSelectors from './people-store.selectors';
   providedIn: 'root',
 })
 export class PeopleStoreFacade {
-  private _store = inject(Store);
+  private _store$ = inject(Store);
 
-  public selectedAllPeopleList$ = this._store.pipe(
+  public selectedAllPeopleList$ = this._store$.pipe(
     select(peopleListSelectors.getPeopleList)
   );
 
-  public selectedPeoplePaginationData$ = this._store.pipe(
+  public selectedPeoplePaginationData$ = this._store$.pipe(
     select(peopleListSelectors.getPeoplePaginationData)
   );
 
-  public selectedPendingStatus$ = this._store.pipe(
+  public selectedPendingStatus$ = this._store$.pipe(
     select(peopleListSelectors.getPeoplePending)
   );
 
@@ -33,7 +33,7 @@ export class PeopleStoreFacade {
     this.dispatch(PeopleStoreActions.resetPeopleState());
   }
 
-  public dispatch(action: Action) {
-    this._store.dispatch(action);
+  private dispatch(action: Action) {
+    this._store$.dispatch(action);
   }
 }

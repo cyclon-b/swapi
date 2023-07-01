@@ -1,6 +1,7 @@
-<div *ngIf="singlePersonFacade.selectedPersonData$ | async as person" class="grid p-3">
+<p-progressBar *ngIf="singlePersonFacade.selectedPendingStatus$ | async" mode="indeterminate" [style]="{ height: '6px' }"></p-progressBar>
+<div *ngIf="singlePersonFacade.selectedSinglePersonData$ | async as person" class="grid p-3">
   <div class="col">
-    <p-card header="{{person?.name}}">
+    <p-panel header="{{person?.name}}">
       <p class="m-0">
         Height: {{person?.height}}
       </p>
@@ -20,6 +21,7 @@
       <p class="m-0">
         Birth year: {{person?.birth_year}}
       </p>
-    </p-card>
+    </p-panel>
   </div>
 </div>
+

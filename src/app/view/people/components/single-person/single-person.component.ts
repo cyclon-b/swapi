@@ -3,31 +3,25 @@ import {
   Component,
   inject,
   OnDestroy,
-  OnInit,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
-import { PeopleStoreFacade } from '../people-list/store/people-store.facade';
-import { FieldsetModule } from 'primeng/fieldset';
-import { CardModule } from 'primeng/card';
-import { Observable } from 'rxjs';
-import { PersonEntity } from '../models/people-list.model';
 import { DividerModule } from 'primeng/divider';
 import { SinglePersonStoreFacade } from './store/single-person-store.facade';
+import { ProgressBarModule } from 'primeng/progressbar';
+import { PanelModule } from 'primeng/panel';
 
 @Component({
   selector: 'swapi-single-person',
   standalone: true,
-  imports: [CommonModule, FieldsetModule, CardModule, DividerModule],
+  imports: [CommonModule, DividerModule, ProgressBarModule, PanelModule],
   templateUrl: './single-person.component.html',
   styleUrls: ['./single-person.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SinglePersonComponent implements OnInit, OnDestroy {
-  private _route = inject(ActivatedRoute);
+export class SinglePersonComponent implements OnDestroy {
   public singlePersonFacade = inject(SinglePersonStoreFacade);
 
-  ngOnInit(): void {}
-
-  ngOnDestroy(): void {}
+  ngOnDestroy(): void {
+    this.singlePersonFacade.resetSinglePersonState();
+  }
 }

@@ -10,3 +10,8 @@ export const getPersonData = createSelector(
   selectSinglePersonStoreState,
   state => state.personData
 );
+
+export const getSinglePersonPending = createSelector(
+  selectSinglePersonStoreState,
+  state => state.pending
+);

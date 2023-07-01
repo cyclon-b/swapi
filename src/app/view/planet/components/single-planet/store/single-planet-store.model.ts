@@ -1,4 +1,4 @@
-import { PersonEntity } from '../../../models/people-list.model';
+import { PlanetEntity } from '../../../models/planet.model';
 
 export namespace ActionModel {
   export namespace Load {
@@ -7,7 +7,7 @@ export namespace ActionModel {
     }
 
     export interface Success {
-      personData: PersonEntity;
+      planetData: PlanetEntity;
     }
 
     export interface Pending {

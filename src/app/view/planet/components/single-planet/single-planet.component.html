@@ -1,0 +1,33 @@
+<p-progressBar *ngIf="singlePlanetFacade.selectedPendingStatus$ | async" mode="indeterminate" [style]="{ height: '6px' }"></p-progressBar>
+<div *ngIf="singlePlanetFacade.selectedSinglePlanetData$ | async as planet" class="grid p-3">
+  <div class="col">
+    <p-panel header="{{planet?.name}}">
+      <p class="m-0">
+        Climate: {{planet?.climate}}
+      </p>
+      <p class="m-0">
+        Diameter: {{planet?.diameter}}
+      </p>
+      <p class="m-0">
+        Gravity: {{planet?.gravity}}
+      </p>
+      <p class="m-0">
+        Orbital period: {{planet?.orbital_period}}
+      </p>
+      <p class="m-0">
+        Rotation period: {{planet?.rotation_period}}
+      </p>
+      <p class="m-0">
+        Terrain: {{planet?.terrain}}
+      </p>
+      <p class="m-0">
+        Surface water: {{planet?.surface_water}}
+      </p>
+      <p-divider></p-divider>
+      <p class="m-0">
+        Population: {{planet?.population}}
+      </p>
+    </p-panel>
+  </div>
+</div>
+

@@ -1,6 +1,6 @@
 <div class="grid">
   <div class="col">
-    <swapi-entities-list [moreDetailHandler]="onMoreDetailClick" [paginatorEnabled]="true" [currentPage]="currentPage()" [entitiesLis]="peopleFacade.selectedAllPeopleList$ | async"
+    <swapi-entities-list [listTitle]="'PEOPLE'" [moreDetailHandler]="onMoreDetailClick" [paginatorEnabled]="true" [currentPage]="currentPage()" [entitiesLis]="peopleFacade.selectedAllPeopleList$ | async"
                          [paginationData]="peopleFacade.selectedPeoplePaginationData$ |async" (changePage)="onPageChange($event)" [entitiesListPending]="peopleFacade.selectedPendingStatus$ | async"></swapi-entities-list>
   </div>
 </div>
