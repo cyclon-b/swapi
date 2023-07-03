@@ -10,32 +10,32 @@ import { EntitiesListComponent } from '../../../../layout/components/entities-li
 import { ActivatedRoute, Router } from '@angular/router';
 import { PaginatorState } from 'primeng/paginator';
 import { BaseEntityModel } from '../../../../shared/models/base-response.model';
-import { PlanetListStoreFacade } from './store/planet-list-store.facade';
+import { StarshipListStoreFacade } from './store/starship-list-store.facade';
 
 @Component({
-  selector: 'swapi-planet-list',
+  selector: 'swapi-starship-list',
   standalone: true,
   imports: [CommonModule, EntitiesListComponent],
-  templateUrl: './planet-list.component.html',
-  styleUrls: ['./planet-list.component.scss'],
+  templateUrl: './starship-list.component.html',
+  styleUrls: ['./starship-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PlanetListComponent implements OnDestroy {
+export class StarshipListComponent implements OnDestroy {
   private _router = inject(Router);
   private _route = inject(ActivatedRoute);
-  public planetFacade = inject(PlanetListStoreFacade);
+  public starshipListFacade = inject(StarshipListStoreFacade);
   public currentPage = signal(this._route.snapshot.params['id'] - 1);
 
   async onPageChange($event: PaginatorState) {
     const normalizedPageNumber = $event.page + 1;
-    await this._router.navigate(['planet', 'page', normalizedPageNumber]);
+    await this._router.navigate(['starship', 'page', normalizedPageNumber]);
   }
 
   onMoreDetailClick = async (e: BaseEntityModel) => {
-    await this._router.navigate(['planet', 'single-planet', e?.url]);
+    await this._router.navigate(['starship', 'single-starship', e?.url]);
   };
 
   ngOnDestroy(): void {
-    this.planetFacade.resetPlanetListState();
+    this.starshipListFacade.resetStarshipsListState();
   }
 }

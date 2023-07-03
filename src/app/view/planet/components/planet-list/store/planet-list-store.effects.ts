@@ -16,7 +16,7 @@ export class PlanetListStoreEffects {
   private _planetListService = inject(PlanetListService);
   private _planetListFacade = inject(PlanetListStoreFacade);
 
-  public loadPeopleList$ = createEffect(() => {
+  public loadPlanetsList$ = createEffect(() => {
     return this._actions$.pipe(
       ofType(PlanetListStoreActions.loadPlanetsListStart),
       tap(_ => this._planetListFacade.togglePendingStatus(true)),

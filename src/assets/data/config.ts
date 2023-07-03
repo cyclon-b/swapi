@@ -17,7 +17,7 @@ export const TOP_MENU_ITEMS = [
   {
     label: 'Starships',
     icon: 'pi-caret-down pi pi-fw',
-    routerLink: ['starships'],
+    routerLink: ['starship', 'page', '1'],
   },
 ];
 

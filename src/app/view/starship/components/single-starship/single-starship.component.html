@@ -1,0 +1,34 @@
+<p-progressBar *ngIf="singleStarshipStoreFacade.selectedPendingStatus$ | async" mode="indeterminate" [style]="{ height: '6px' }"></p-progressBar>
+<div *ngIf="singleStarshipStoreFacade.selectedSingleStarshipData$ | async as starship" class="grid p-3">
+  <div class="col">
+    <p-panel header="{{starship?.name}}">
+      <p class="m-0">
+        Model: {{starship?.model}}
+      </p>
+      <p class="m-0">
+        Length: {{starship?.length}}
+      </p>
+      <p class="m-0">
+        Cost in credits: {{starship?.cost_in_credits}}
+      </p>
+      <p class="m-0">
+        Crew: {{starship?.crew}}
+      </p>
+      <p class="m-0">
+        Passengers: {{starship?.passengers}}
+      </p>
+      <p class="m-0">
+        Cargo capacity: {{starship?.cargo_capacity}}
+      </p>
+      <p class="m-0">
+        Starship class: {{starship?.starship_class}}
+      </p>
+      <p-divider></p-divider>
+      <p class="m-0">
+        Manufacturer: {{starship?.manufacturer}}
+      </p>
+    </p-panel>
+  </div>
+</div>
+
+

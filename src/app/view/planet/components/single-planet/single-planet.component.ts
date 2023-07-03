@@ -1,4 +1,9 @@
-import { Component, inject, OnDestroy } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  OnDestroy,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SinglePlanetStoreFacade } from './store/single-planet-store.facade';
 import { DividerModule } from 'primeng/divider';
@@ -11,6 +16,7 @@ import { ProgressBarModule } from 'primeng/progressbar';
   imports: [CommonModule, DividerModule, PanelModule, ProgressBarModule],
   templateUrl: './single-planet.component.html',
   styleUrls: ['./single-planet.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SinglePlanetComponent implements OnDestroy {
   public singlePlanetFacade = inject(SinglePlanetStoreFacade);

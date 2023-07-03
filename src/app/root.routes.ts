@@ -16,4 +16,9 @@ export const rootRoutes: Routes = [
     loadChildren: () =>
       import('./view/planet/planet.routes').then(m => m.planetRoutes),
   },
+  {
+    path: 'starship',
+    loadChildren: () =>
+      import('./view/starship/starship.routes').then(m => m.starshipRoutes),
+  },
 ];
