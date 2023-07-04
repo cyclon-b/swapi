@@ -57,5 +57,3 @@ export class EntitiesListComponent {
     return item?.url;
   }
 }
-
-// TODO: Доделать логику пагинатора для текущего апи добавить router state
