@@ -15,7 +15,7 @@ export const peopleListResolver: ResolveFn<Observable<true>> = (
   return rootFacade.selectedUrlConfig$.pipe(
     skipWhile(config => !config?.people),
     tap(urlConfig => {
-      peopleFacade.loadPeopleListStart(
+      peopleFacade.loadEntitiesListStart(
         urlConfig?.people,
         currentPage ? currentPage : 1
       );

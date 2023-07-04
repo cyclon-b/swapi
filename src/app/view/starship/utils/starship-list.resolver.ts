@@ -12,7 +12,7 @@ export const starshipListResolver: ResolveFn<boolean> = (route, state) => {
   return rootFacade.selectedUrlConfig$.pipe(
     skipWhile(config => !config?.starships),
     tap(urlConfig => {
-      starshipListStoreFacade.loadStarshipsListStart(
+      starshipListStoreFacade.loadEntitiesListStart(
         urlConfig?.starships,
         currentPage ? currentPage : 1
       );

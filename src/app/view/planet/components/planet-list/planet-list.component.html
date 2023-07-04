@@ -1,6 +1,6 @@
 <div class="grid">
   <div class="col">
-    <swapi-entities-list [listTitle]="'PLANETS'" [moreDetailHandler]="onMoreDetailClick" [paginatorEnabled]="true" [currentPage]="currentPage()" [entitiesLis]="planetFacade.selectedAllPlanetList$ | async"
-                         [paginationData]="planetFacade.selectedPlanetListPaginationData$ |async" (changePage)="onPageChange($event)" [entitiesListPending]="planetFacade.selectedPendingStatus$ | async"></swapi-entities-list>
+    <swapi-entities-list [listTitle]="'PLANETS'" categoryUrl="planet" subCategoryUrl="single-planet" [moreDetailHandler]="onMoreDetailClick" [paginatorEnabled]="true" [currentPage]="currentPage()" [entitiesLis]="facade.selectedAllEntities$ | async"
+                         [paginationData]="facade.selectedPaginationData$ |async" (changePage)="onPageChange($event, 'planet')" [entitiesListPending]="facade.selectedPendingStatus$ | async"></swapi-entities-list>
   </div>
 </div>

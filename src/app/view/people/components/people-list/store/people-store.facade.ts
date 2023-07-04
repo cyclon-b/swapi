@@ -2,26 +2,34 @@ import { inject, Injectable } from '@angular/core';
 import { Action, select, Store } from '@ngrx/store';
 import { PeopleStoreActions } from './people-store.actions';
 import * as peopleListSelectors from './people-store.selectors';
+import { BaseListViewStoreFacadeModel } from '../../../../../shared/models/base-list-view-store-facade.model';
+import {
+  PersonEntity,
+  PersonResponseModel,
+} from '../../../models/people-list.model';
 
 @Injectable({
   providedIn: 'root',
 })
-export class PeopleStoreFacade {
+export class PeopleStoreFacade extends BaseListViewStoreFacadeModel<
+  PersonResponseModel,
+  PersonEntity
+> {
   private _store$ = inject(Store);
 
-  public selectedAllPeopleList$ = this._store$.pipe(
+  public override selectedAllEntities$ = this._store$.pipe(
     select(peopleListSelectors.getPeopleList)
   );
 
-  public selectedPeoplePaginationData$ = this._store$.pipe(
+  public override selectedPaginationData$ = this._store$.pipe(
     select(peopleListSelectors.getPeoplePaginationData)
   );
 
-  public selectedPendingStatus$ = this._store$.pipe(
+  public override selectedPendingStatus$ = this._store$.pipe(
     select(peopleListSelectors.getPeoplePending)
   );
 
-  public loadPeopleListStart(url = '', pageNumber: number) {
+  public loadEntitiesListStart(url = '', pageNumber: number) {
     this.dispatch(PeopleStoreActions.loadPeopleStart({ url, pageNumber }));
   }
 
@@ -29,11 +37,11 @@ export class PeopleStoreFacade {
     this.dispatch(PeopleStoreActions.loadPeoplePending({ isPending }));
   }
 
-  public resetPeopleListState() {
+  public resetState() {
     this.dispatch(PeopleStoreActions.resetPeopleState());
   }
 
-  private dispatch(action: Action) {
+  public dispatch(action: Action) {
     this._store$.dispatch(action);
   }
 }

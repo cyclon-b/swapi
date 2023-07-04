@@ -10,7 +10,7 @@
 
   <div class="my-3 col-12 md:col-6" *ngFor="let entity of entitiesLis; trackBy: trackByUrl">
     <p-card [header]="entity.name">
-      <p-button (click)="moreDetailHandler(entity)">More info</p-button>
+      <p-button (click)="moreDetailHandler(entity, categoryUrl, subCategoryUrl)">More info</p-button>
     </p-card>
 
 

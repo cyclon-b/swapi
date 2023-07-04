@@ -2,22 +2,30 @@ import { inject, Injectable } from '@angular/core';
 import { Action, select, Store } from '@ngrx/store';
 import * as planetListStoreSelectors from './planet-list-store.selectors';
 import { PlanetListStoreActions } from './planet-list-store.actions';
+import { BaseListViewStoreFacadeModel } from '../../../../../shared/models/base-list-view-store-facade.model';
+import {
+  PlanetEntity,
+  PlanetResponseModel,
+} from '../../../models/planet.model';
 
 @Injectable({
   providedIn: 'root',
 })
-export class PlanetListStoreFacade {
+export class PlanetListStoreFacade extends BaseListViewStoreFacadeModel<
+  PlanetResponseModel,
+  PlanetEntity
+> {
   private _store$ = inject(Store);
 
-  private dispatch(action: Action) {
+  public dispatch(action: Action) {
     this._store$.dispatch(action);
   }
 
-  public selectedAllPlanetList$ = this._store$.pipe(
+  public selectedAllEntities$ = this._store$.pipe(
     select(planetListStoreSelectors.getPlanetList)
   );
 
-  public selectedPlanetListPaginationData$ = this._store$.pipe(
+  public selectedPaginationData$ = this._store$.pipe(
     select(planetListStoreSelectors.getPlanetListPaginationData)
   );
 
@@ -25,7 +33,7 @@ export class PlanetListStoreFacade {
     select(planetListStoreSelectors.getPlanetListPending)
   );
 
-  public loadPlanetListStart(url = '', pageNumber: number) {
+  public loadEntitiesListStart(url = '', pageNumber: number) {
     this.dispatch(
       PlanetListStoreActions.loadPlanetsListStart({ url, pageNumber })
     );
@@ -35,7 +43,7 @@ export class PlanetListStoreFacade {
     this.dispatch(PlanetListStoreActions.loadPlanetsListPending({ isPending }));
   }
 
-  public resetPlanetListState() {
+  public resetState() {
     this.dispatch(PlanetListStoreActions.resetPlanetsListState());
   }
 }

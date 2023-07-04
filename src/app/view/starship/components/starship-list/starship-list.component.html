@@ -1,11 +1,13 @@
 <div class="grid">
   <div class="col">
     <swapi-entities-list [listTitle]="'STARSHIPS'" [moreDetailHandler]="onMoreDetailClick" [paginatorEnabled]="true"
+                         categoryUrl="starship"
+                         subCategoryUrl="single-starship"
                          [currentPage]="currentPage()"
-                         [entitiesLis]="starshipListFacade.selectedAllStarshipsList$ | async"
-                         [paginationData]="starshipListFacade.selectedStarshipsListPaginationData$ |async"
-                         (changePage)="onPageChange($event)"
-                         [entitiesListPending]="starshipListFacade.selectedPendingStatus$ | async"></swapi-entities-list>
+                         [entitiesLis]="facade.selectedAllEntities$ | async"
+                         [paginationData]="facade.selectedPaginationData$ |async"
+                         (changePage)="onPageChange($event, 'starship')"
+                         [entitiesListPending]="facade.selectedPendingStatus$ | async"></swapi-entities-list>
   </div>
 </div>
 

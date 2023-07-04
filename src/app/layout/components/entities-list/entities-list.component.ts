@@ -39,6 +39,8 @@ export class EntitiesListComponent {
   @Input() public entitiesListPending: boolean;
   @Input() public moreDetailHandler: Function;
   @Input() public listTitle: string;
+  @Input() public categoryUrl: string;
+  @Input() public subCategoryUrl: string;
   @Output() public changePage = new EventEmitter<PaginatorState>();
   @Output() public openSinglePage = new EventEmitter<{
     name: string;

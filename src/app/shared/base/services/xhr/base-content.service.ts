@@ -5,7 +5,7 @@ import { map, tap } from 'rxjs/operators';
 import {
   BaseEntityModel,
   BaseResponseModel,
-} from '../../models/base-response.model';
+} from '../../../models/base-response.model';
 
 @Injectable()
 export class BaseContentService<T extends BaseResponseModel | BaseEntityModel> {

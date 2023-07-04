@@ -11,6 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { PaginatorState } from 'primeng/paginator';
 import { BaseEntityModel } from '../../../../shared/models/base-response.model';
 import { StarshipListStoreFacade } from './store/starship-list-store.facade';
+import { BaseListViewDirective } from '../../../../shared/base/directives/base-list-view.directive';
 
 @Component({
   selector: 'swapi-starship-list',
@@ -20,22 +21,12 @@ import { StarshipListStoreFacade } from './store/starship-list-store.facade';
   styleUrls: ['./starship-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class StarshipListComponent implements OnDestroy {
-  private _router = inject(Router);
-  private _route = inject(ActivatedRoute);
-  public starshipListFacade = inject(StarshipListStoreFacade);
-  public currentPage = signal(this._route.snapshot.params['id'] - 1);
-
-  async onPageChange($event: PaginatorState) {
-    const normalizedPageNumber = $event.page + 1;
-    await this._router.navigate(['starship', 'page', normalizedPageNumber]);
-  }
-
-  onMoreDetailClick = async (e: BaseEntityModel) => {
-    await this._router.navigate(['starship', 'single-starship', e?.url]);
-  };
-
-  ngOnDestroy(): void {
-    this.starshipListFacade.resetStarshipsListState();
+export class StarshipListComponent extends BaseListViewDirective {
+  constructor(
+    router: Router,
+    route: ActivatedRoute,
+    facade: StarshipListStoreFacade
+  ) {
+    super(router, route, facade);
   }
 }

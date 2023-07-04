@@ -15,7 +15,7 @@ export const planetListResolver: ResolveFn<Observable<boolean>> = (
   return rootFacade.selectedUrlConfig$.pipe(
     skipWhile(config => !config?.planets),
     tap(urlConfig => {
-      planetFacade.loadPlanetListStart(
+      planetFacade.loadEntitiesListStart(
         urlConfig?.planets,
         currentPage ? currentPage : 1
       );
