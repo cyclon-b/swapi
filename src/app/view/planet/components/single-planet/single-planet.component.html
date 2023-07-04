@@ -1,5 +1,5 @@
-<p-progressBar *ngIf="singlePlanetFacade.selectedPendingStatus$ | async" mode="indeterminate" [style]="{ height: '6px' }"></p-progressBar>
-<div *ngIf="singlePlanetFacade.selectedSinglePlanetData$ | async as planet" class="grid p-3">
+<p-progressBar *ngIf="facade.selectedPendingStatus$ | async" mode="indeterminate" [style]="{ height: '6px' }"></p-progressBar>
+<div *ngIf="facade.selectedEntityData$ | async as planet" class="grid p-3">
   <div class="col">
     <p-panel header="{{planet?.name}}">
       <p class="m-0">

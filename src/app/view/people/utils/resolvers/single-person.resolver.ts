@@ -6,8 +6,8 @@ import { firstValueFrom } from 'rxjs';
 export const singlePersonResolver: ResolveFn<boolean> = (route, state) => {
   const singlePersonFacade = inject(SinglePersonStoreFacade);
   const url = route.params['url'];
-  singlePersonFacade.loadSinglePersonStart(url);
-  return firstValueFrom(singlePersonFacade.selectedSinglePersonData$)
+  singlePersonFacade.loadSingleEntityStart(url);
+  return firstValueFrom(singlePersonFacade.selectedEntityData$)
     .then(_ => true)
     .catch(e => false);
 };

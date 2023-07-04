@@ -1,5 +1,5 @@
-<p-progressBar *ngIf="singleStarshipStoreFacade.selectedPendingStatus$ | async" mode="indeterminate" [style]="{ height: '6px' }"></p-progressBar>
-<div *ngIf="singleStarshipStoreFacade.selectedSingleStarshipData$ | async as starship" class="grid p-3">
+<p-progressBar *ngIf="facade.selectedPendingStatus$ | async" mode="indeterminate" [style]="{ height: '6px' }"></p-progressBar>
+<div *ngIf="facade.selectedEntityData$ | async as starship" class="grid p-3">
   <div class="col">
     <p-panel header="{{starship?.name}}">
       <p class="m-0">

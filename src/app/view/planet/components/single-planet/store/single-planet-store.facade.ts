@@ -2,21 +2,23 @@ import { inject, Injectable } from '@angular/core';
 import { Action, select, Store } from '@ngrx/store';
 import * as singlePlanetSelectors from './single-planet-store.selectors';
 import { SinglePlanetStoreActions } from './single-planet-store.actions';
+import { BaseSingleViewStoreFacadeModel } from '../../../../../shared/base/models/base-single-view-store-facade.model';
+import { PlanetEntity } from '../../../models/planet.model';
 
 @Injectable({
   providedIn: 'root',
 })
-export class SinglePlanetStoreFacade {
+export class SinglePlanetStoreFacade extends BaseSingleViewStoreFacadeModel<PlanetEntity> {
   private _store$ = inject(Store);
 
-  public selectedSinglePlanetData$ = this._store$.pipe(
+  public selectedEntityData$ = this._store$.pipe(
     select(singlePlanetSelectors.getPlanetData)
   );
   public selectedPendingStatus$ = this._store$.pipe(
     select(singlePlanetSelectors.getSinglePlanetPending)
   );
 
-  public loadSinglePlanetStart(url) {
+  public loadSingleEntityStart(url) {
     this.dispatch(SinglePlanetStoreActions.loadSinglePlanetStart({ url }));
   }
 
@@ -26,11 +28,11 @@ export class SinglePlanetStoreFacade {
     );
   }
 
-  public resetSinglePlanetState() {
+  public resetState() {
     this.dispatch(SinglePlanetStoreActions.resetSinglePlanetState());
   }
 
-  private dispatch(action: Action) {
+  public dispatch(action: Action) {
     this._store$.dispatch(action);
   }
 }

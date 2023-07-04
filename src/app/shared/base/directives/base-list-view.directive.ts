@@ -1,10 +1,10 @@
 import { Directive, OnDestroy, signal } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { BaseListViewStoreFacadeModel } from '../../models/base-list-view-store-facade.model';
+import { BaseListViewStoreFacadeModel } from '../models/base-list-view-store-facade.model';
 import {
   BaseEntityModel,
   BaseResponseModel,
-} from '../../models/base-response.model';
+} from '../models/base-response.model';
 import { PaginatorState } from 'primeng/paginator';
 
 @Directive({

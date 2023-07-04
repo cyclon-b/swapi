@@ -2,7 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { Action, select, Store } from '@ngrx/store';
 import * as planetListStoreSelectors from './planet-list-store.selectors';
 import { PlanetListStoreActions } from './planet-list-store.actions';
-import { BaseListViewStoreFacadeModel } from '../../../../../shared/models/base-list-view-store-facade.model';
+import { BaseListViewStoreFacadeModel } from '../../../../../shared/base/models/base-list-view-store-facade.model';
 import {
   PlanetEntity,
   PlanetResponseModel,

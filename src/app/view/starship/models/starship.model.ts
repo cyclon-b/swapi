@@ -1,7 +1,7 @@
 import {
   BaseEntityModel,
   BaseResponseModel,
-} from '../../../shared/models/base-response.model';
+} from '../../../shared/base/models/base-response.model';
 
 export interface StarshipResponseModel extends BaseResponseModel {
   results: StarshipEntity[];

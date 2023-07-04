@@ -5,6 +5,7 @@ import { PanelModule } from 'primeng/panel';
 import { ProgressBarModule } from 'primeng/progressbar';
 import { SinglePlanetStoreFacade } from '../../../planet/components/single-planet/store/single-planet-store.facade';
 import { SingleStarshipStoreFacade } from './store/single-starship-store.facade';
+import { BaseSingleViewDirective } from '../../../../shared/base/directives/base-single-view.directive';
 
 @Component({
   selector: 'swapi-single-starship',
@@ -14,10 +15,8 @@ import { SingleStarshipStoreFacade } from './store/single-starship-store.facade'
   styleUrls: ['./single-starship.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SingleStarshipComponent {
-  public singleStarshipStoreFacade = inject(SingleStarshipStoreFacade);
-
-  ngOnDestroy(): void {
-    this.singleStarshipStoreFacade.resetSingleStarshipState();
+export class SingleStarshipComponent extends BaseSingleViewDirective {
+  constructor(override facade: SingleStarshipStoreFacade) {
+    super(facade);
   }
 }

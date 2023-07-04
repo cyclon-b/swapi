@@ -1,5 +1,5 @@
-<p-progressBar *ngIf="singlePersonFacade.selectedPendingStatus$ | async" mode="indeterminate" [style]="{ height: '6px' }"></p-progressBar>
-<div *ngIf="singlePersonFacade.selectedSinglePersonData$ | async as person" class="grid p-3">
+<p-progressBar *ngIf="facade.selectedPendingStatus$ | async" mode="indeterminate" [style]="{ height: '6px' }"></p-progressBar>
+<div *ngIf="facade.selectedEntityData$ | async as person" class="grid p-3">
   <div class="col">
     <p-panel header="{{person?.name}}">
       <p class="m-0">

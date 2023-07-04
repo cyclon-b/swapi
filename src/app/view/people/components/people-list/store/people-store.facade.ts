@@ -2,7 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { Action, select, Store } from '@ngrx/store';
 import { PeopleStoreActions } from './people-store.actions';
 import * as peopleListSelectors from './people-store.selectors';
-import { BaseListViewStoreFacadeModel } from '../../../../../shared/models/base-list-view-store-facade.model';
+import { BaseListViewStoreFacadeModel } from '../../../../../shared/base/models/base-list-view-store-facade.model';
 import {
   PersonEntity,
   PersonResponseModel,

@@ -17,7 +17,7 @@ export class PeopleListComponent extends BaseListViewDirective {
   constructor(
     route: ActivatedRoute,
     router: Router,
-    facade: PeopleStoreFacade
+    override facade: PeopleStoreFacade
   ) {
     super(router, route, facade);
   }

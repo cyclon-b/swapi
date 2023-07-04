@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
 import {
   BaseEntityModel,
   BaseResponseModel,
-} from '../../../shared/models/base-response.model';
+} from '../../../shared/base/models/base-response.model';
 import { ProgressBarModule } from 'primeng/progressbar';
 import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';

@@ -6,8 +6,8 @@ import { SinglePlanetStoreFacade } from '../components/single-planet/store/singl
 export const singlePlanetResolver: ResolveFn<boolean> = (route, state) => {
   const singlePlanetFacade = inject(SinglePlanetStoreFacade);
   const url = route.params['url'];
-  singlePlanetFacade.loadSinglePlanetStart(url);
-  return firstValueFrom(singlePlanetFacade.selectedSinglePlanetData$)
+  singlePlanetFacade.loadSingleEntityStart(url);
+  return firstValueFrom(singlePlanetFacade.selectedEntityData$)
     .then(_ => true)
     .catch(e => false);
 };

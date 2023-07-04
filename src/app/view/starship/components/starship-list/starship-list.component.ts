@@ -17,7 +17,7 @@ export class StarshipListComponent extends BaseListViewDirective {
   constructor(
     router: Router,
     route: ActivatedRoute,
-    facade: StarshipListStoreFacade
+    override facade: StarshipListStoreFacade
   ) {
     super(router, route, facade);
   }

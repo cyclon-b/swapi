@@ -17,7 +17,7 @@ export class PlanetListComponent extends BaseListViewDirective {
   constructor(
     router: Router,
     route: ActivatedRoute,
-    facade: PlanetListStoreFacade
+    override facade: PlanetListStoreFacade
   ) {
     super(router, route, facade);
   }
